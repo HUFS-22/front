@@ -1,10 +1,9 @@
-import Header from "./components/header";
+import RootRoute from "./routes";
 
 function App() {
   return (
     <div>
-      <Header />
-
+      <RootRoute/>
     </div>
   );
 }

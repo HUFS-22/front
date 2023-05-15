@@ -6,14 +6,30 @@ import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [searchClick, setSearchClick] = useState(false);
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
   return (
     <PageWrap>
       <PageContainer>
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent:'center', marginTop:'70px' }}>
           <SearchBox>
-            <input className='input-style' placeholder={searchClick?'':'아티스트가 만들어가는 창의적인 검색'} onFocus={()=>{setSearchClick(true)}} onBlur={()=>setSearchClick(false)}/>
-            <img src='https://static.talented.co.kr/t_img/service_img/img_pc/icon/search.png' className='icon' onClick={()=>navigate('/search/result')}/>
+            <input
+              className='input-style'
+              placeholder={searchClick ? '' : '아티스트가 만들어가는 창의적인 검색'}
+              onFocus={() => { setSearchClick(true) }}
+              onBlur={() => setSearchClick(false)}
+              onChange={(e)=>setSearch(e.target.value)}
+            />
+            <img
+              src='https://static.talented.co.kr/t_img/service_img/img_pc/icon/search.png'
+              className='icon'
+              onClick={() => {
+                console.log(search)
+                navigate(
+                  '/search/result',
+                  {state:search}
+                )
+              }} />
           </SearchBox>
         </div>
         <div>

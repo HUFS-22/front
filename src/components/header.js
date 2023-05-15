@@ -4,7 +4,7 @@ import talented_logo from '../assets/images/talented_logo.png'
 import alarm from '../assets/images/alarm.svg'
 import message from '../assets/images/message.svg'
 import person from '../assets/images/person.svg'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ const Header = () => {
             setMenu(true);
             navigate('/search');
           }}>발견</div>
-          <div className='text'>오.캐</div>
-          <div className='text'>매거진</div>
+          <div className='text'><Link to='https://talented.co.kr/pc_aucaList'>오.캐</Link></div>
+          <div className='text'><Link to='https://talented.co.kr/pc_storyList'>매거진</Link></div>
           <div className='text'>나의 채널</div>
           <img src='https://static.talented.co.kr/t_img/service_img/img_pc/icon/ic_b-tap_rookiecamp_end_pc_100_20.png' style={{width:'100px', height:'20px', objectFit:'contain'}}/>
         </div>

@@ -21,8 +21,8 @@ const Header = () => {
             setMenu(true);
             navigate('/search');
           }}>발견</div>
-          <div className='text'><Link to='https://talented.co.kr/pc_aucaList' style={{ textDecoration: "none" }}>오.캐</Link></div>
-          <div className='text'><Link to='https://talented.co.kr/pc_storyList' style={{ textDecoration: "none" }}>매거진</Link></div>
+          <div className='text'><Link to='https://talented.co.kr/pc_aucaList' style={{ textDecoration: "none", color: '#b4b4b4'}}>오.캐</Link></div>
+          <div className='text'><Link to='https://talented.co.kr/pc_storyList' style={{ textDecoration: "none", color: '#b4b4b4' }}>매거진</Link></div>
           <div className='text'>나의 채널</div>
           <img src='https://static.talented.co.kr/t_img/service_img/img_pc/icon/ic_b-tap_rookiecamp_end_pc_100_20.png' style={{width:'100px', height:'20px', objectFit:'contain'}}/>
         </div>

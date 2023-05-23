@@ -15,12 +15,14 @@ const PortfolioPage = () => {
   const [search, setSearch] = useState(location.state);
 
   const [portfolioList, setPortfolioList] = useState([]);
+
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
   
   const portfolioSearch = async (search) => {
     try {
       const data = await axios({
         method: 'get',
-        url: `/search/portfolio?q=${search}`,
+        url: `${PROXY}/search/portfolio?q=${search}`,
       })
       console.log(data);
       if (data.data.code === 200) {

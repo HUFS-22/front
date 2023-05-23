@@ -40,11 +40,13 @@ const ArtistPage = () => {
     }
   }
 
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
   const artistSearch = async (search) => {
     try {
       const data = await axios({
         method: 'post',
-        url: `/search/artist?q=${search}`,
+        url: `${PROXY}/search/artist?q=${search}`,
         data: {
           "keywords": [
             ...filter,

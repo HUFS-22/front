@@ -18,11 +18,13 @@ const SearchResult = () => {
   const [artistList, setArtistList] = useState([]);
   const [portfolioList, setPortfolioList] = useState([]);
 
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
   const totalSearch = async (search) => {
     try {
       const data = await axios({
         method: 'get',
-        url: `/search?q=${search}`,
+        url: `${PROXY}/search?q=${search}`,
       })
       console.log('통합검색', data);
       if (data.data.code === 200) {

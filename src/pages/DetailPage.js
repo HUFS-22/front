@@ -11,11 +11,13 @@ const DetailPage = () => {
   const [isFilter, setIsFilter] = useState(false);
   const [profile, setProfile] = useState({});
 
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
   const getProfile = async (userId) => {
     try {
       const data = await axios({
         method: 'get',
-        url: `/channel/${userId}`,
+        url: `${PROXY}/channel/${userId}`,
       })
       console.log(data);
       if (data.data.code === 200) {
@@ -31,7 +33,7 @@ const DetailPage = () => {
     try {
       const data = await axios({
         method: 'get',
-        url: `/artist-keyword/${userId}`,
+        url: `${PROXY}/artist-keyword/${userId}`,
       })
       console.log(data);
       if (data.data.code === 200) {

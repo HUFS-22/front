@@ -8,11 +8,13 @@ const PortfolioDetailPage = () => {
   const location = useLocation();
   console.log(location)
 
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
   const searchPortfolio= async (id) => {
       try {
         const data = await axios({
           method: 'get',
-          url: '/portfolio/1',
+          url: `${PROXY}/portfolio/1`,
         })
         console.log(data);
       } 

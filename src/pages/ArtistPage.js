@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageContainer, PageWrap } from '../components/styledPage'
 import { SearchBox } from './Search'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -32,8 +32,8 @@ const ArtistPage = () => {
             <div style={{ fontSize: '25px', fontWeight: 900, marginBottom: '24px', marginTop: '40px' }}>아티스트</div>
             <ArtistResult>
               <Artist />
-              <Artist/>
-              <Artist/>
+              <Artist />
+              <Artist />
               <Artist />
               <Artist />
               <Artist />

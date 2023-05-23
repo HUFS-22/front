@@ -4,6 +4,7 @@ import { SearchBox } from './Search'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from './SearchResult';
 import styled from 'styled-components';
+import Portfolio from '../components/portfolio';
 
 const PortfolioPage = () => {
   const [searchClick, setSearchClick] = useState(false);
@@ -11,7 +12,7 @@ const PortfolioPage = () => {
   const location = useLocation();
 
   const [search, setSearch] = useState(location.state);
-
+  
   return (
     <PageWrap>
       <PageContainer>
@@ -26,10 +27,29 @@ const PortfolioPage = () => {
               <div className='menuBox' onClick={()=>navigate('/search/result/artist',{state:search})}>아티스트</div>
               <div className='menuBox' style={{backgroundColor:'#EDECEC', fontWeight:600}}>포트폴리오</div>
           </Menu>
-          <div style={{ fontSize: '25px', fontWeight: 900, marginBottom: '24px', marginTop: '40px' }}>포트폴리오</div>
+        <div style={{ fontSize: '25px', fontWeight: 900, marginBottom: '24px', marginTop: '40px' }}>포트폴리오</div>
+        <PortfolioResult>
+          <Portfolio />
+          <Portfolio/>
+          <Portfolio/>
+          <Portfolio/>
+          <Portfolio/>
+          <Portfolio />
+          <Portfolio/>
+          <Portfolio/>
+          <Portfolio/>
+          <Portfolio/>
+        </PortfolioResult>
       </PageContainer>
     </PageWrap>
   )
 }
 
 export default PortfolioPage
+
+const PortfolioResult = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;

@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <HeaderComponent>
       <div style={{width:'1200px', display:'flex', flexDirection:'row', justifyContent:'space-between', alignContent:'center'}}>
-        <img src={talented_logo} className='talented-logo' onClick={() => {
+        <img src={'https://static.talented.co.kr/t_img/service_img/reb/logo_talented_b.png'} className='talented-logo' onClick={() => {
           setMenu(false);
           navigate('/')
         }}/>
@@ -30,7 +30,10 @@ const Header = () => {
           <div style={{color:'#666', marginRight:'1.875rem'}}>STORE</div>
           <img src={alarm} className='icon'/>
           <img src={message} className='icon'/>
-          <img src={person} className='icon' />
+          <img src={person} className='icon' onClick={() => {
+            navigate('/mypage')
+            setMenu(false)
+          }} />
           <PortfolioButton>
             포트폴리오 +
           </PortfolioButton>
@@ -52,6 +55,7 @@ const HeaderComponent = styled.div`
 
   .talented-logo{
     height: 40px;
+    width: 120px;
     object-fit: contain;
     cursor: pointer;
   }

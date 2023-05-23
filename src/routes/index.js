@@ -5,6 +5,10 @@ import Header from "../components/header";
 import SearchResult from "../pages/SearchResult";
 import ArtistPage from "../pages/ArtistPage";
 import PortfolioPage from "../pages/PortfolioPage";
+import PortfolioDetailPage from "../pages/PortfolioDetailPage";
+import MyPage from "../pages/MyPage";
+import ProfilePage from "../pages/ProfilePage";
+import DetailPage from "../pages/DetailPage";
 
 const RootRoute = () => {
   return (
@@ -15,7 +19,11 @@ const RootRoute = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/search/result" element={<SearchResult />} />
         <Route path="/search/result/artist" element={<ArtistPage />} />
-        <Route path="/search/result/portfolio" element={<PortfolioPage/>} />
+        <Route path="/search/result/portfolio" element={<PortfolioPage />} />
+        <Route path="/portfolio/:id" element={<PortfolioDetailPage />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/detail" element={<DetailPage/>} />
       </Routes>
     </BrowserRouter>
   );

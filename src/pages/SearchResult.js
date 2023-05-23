@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Artist from '../components/artist';
 import next from '../assets/images/next.png'
+import Portfolio from '../components/portfolio';
 
 const SearchResult = () => {
   const [searchClick, setSearchClick] = useState(false);
@@ -62,11 +63,11 @@ const SearchResult = () => {
         <ResultBox>
           <div className='title'>포트폴리오</div>
           <div className='artist-result'>
-            <Artist />
-            <Artist />
-            <Artist />
-            <Artist />
-            <Artist />
+            <Portfolio />
+            <Portfolio />
+            <Portfolio />
+            <Portfolio />
+            <Portfolio />
           </div>
           <div className='more' onClick={()=>navigate('/search/result/portfolio',{state:search})}>
             포트폴리오 더보기

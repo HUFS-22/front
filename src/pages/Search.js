@@ -8,6 +8,7 @@ const Search = () => {
   const [searchClick, setSearchClick] = useState(false);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+
   return (
     <PageWrap>
       <PageContainer>
@@ -37,8 +38,8 @@ const Search = () => {
           <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', flexWrap:'wrap'}}>
             <Artist />
             <Artist />
-            <Artist/>
-            <Artist/>
+            <Artist />
+            <Artist />
             <Artist />
             <Artist />
             <Artist />

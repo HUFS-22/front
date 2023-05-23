@@ -26,10 +26,14 @@ const Search = () => {
               className='icon'
               onClick={() => {
                 console.log(search)
-                navigate(
-                  '/search/result',
-                  {state:search}
-                )
+                if (search == '') {
+                  alert('검색어를 입력해주세요')
+                } else {
+                  navigate(
+                    '/search/result',
+                    {state:search}
+                  )
+                }
               }} />
           </SearchBox>
         </div>

@@ -2,15 +2,15 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Artist = () => {
+const Artist = ({belong, job, image, userName}) => {
   const navigate = useNavigate();
 
   return (
     <ArtistComponent onClick={()=>{navigate('/portfolio/1')}}>
-      <img className='img-style' src='https://static.talented.co.kr/user_data/gyelus/profile_image/410ab5c6-43da-4101-b08a-ac992e8af7c6.jpeg?w=300&h=300' />
-      <div className='description-text'>프리랜서</div>
-      <div className='description-text'>사진작가</div>
-      <div className='name-text'>만식</div>
+      <img className='img-style' src={image} />
+      <div className='description-text'>{belong}</div>
+      <div className='description-text'>{job}</div>
+      <div className='name-text'>{userName}</div>
     </ArtistComponent>
   )
 }
@@ -29,6 +29,7 @@ const ArtistComponent = styled.div`
     height: 220px;
     border-radius: 50%;
     margin-bottom: 20px;
+    object-fit: cover;
   }
 
   .description-text{

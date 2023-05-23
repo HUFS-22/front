@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageContainer, PageWrap } from '../components/styledPage'
 import { SearchBox } from './Search'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,15 +6,39 @@ import styled from 'styled-components';
 import Artist from '../components/artist';
 import next from '../assets/images/next.png'
 import Portfolio from '../components/portfolio';
+import axios from 'axios';
 
 const SearchResult = () => {
   const [searchClick, setSearchClick] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location)
 
   const [search, setSearch] = useState(location.state);
 
+  const [artistList, setArtistList] = useState([]);
+  const [portfolioList, setPortfolioList] = useState([]);
+
+  const totalSearch = async (search) => {
+    try {
+      const data = await axios({
+        method: 'get',
+        url: `/search?q=${search}`,
+      })
+      console.log('통합검색', data);
+      if (data.data.code === 200) {
+        setArtistList(data.data.result.artistList)
+        setPortfolioList(data.data.result.portfolioList)
+      }
+    } 
+    catch(err) {
+      alert(err);
+    }
+}
+
+  useEffect(() => {
+    totalSearch(search)
+  }, [search])
+  
   return (
     <PageWrap>
       <PageContainer>
@@ -48,13 +72,15 @@ const SearchResult = () => {
         <ResultBox>
           <div className='title'>아티스트</div>
           <div className='artist-result'>
-            <Artist />
-            <Artist />
-            <Artist />
-            <Artist />
-            <Artist />
+          {artistList.length != 0 ? artistList.map((artist) => (
+                <Artist belong={artist.belong} job={artist.job} image={artist.profileImageUrl} userName={artist.userName}/>
+              )) :
+                <div>
+                  해당 키워드에 대한 검색 결과가 없습니다.
+                </div>
+              }
           </div>
-          <div className='more' onClick={()=>navigate('/search/result/artist',{state:search})}>
+          <div className='more' onClick={()=>navigate('/search/result/artist', {state:search})}>
             아티스트 더보기
             <img src={next} className='arrow-icon'/>
           </div>
@@ -63,11 +89,13 @@ const SearchResult = () => {
         <ResultBox>
           <div className='title'>포트폴리오</div>
           <div className='artist-result'>
-            <Portfolio />
-            <Portfolio />
-            <Portfolio />
-            <Portfolio />
-            <Portfolio />
+          {portfolioList.length != 0 ? portfolioList.map((portfolio) => (
+            <Portfolio title={portfolio.title} image={portfolio.coverImageUrl} userName={portfolio.userName} userImage={portfolio.profileImageUrl} />
+              )) :
+                <div>
+                  해당 키워드에 대한 검색 결과가 없습니다.
+                </div>
+          }
           </div>
           <div className='more' onClick={()=>navigate('/search/result/portfolio',{state:search})}>
             포트폴리오 더보기
@@ -115,7 +143,6 @@ const ResultBox = styled.div`
   .artist-result{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-top: 40px;
     padding: 0 10px;
   }

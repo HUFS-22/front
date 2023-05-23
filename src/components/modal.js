@@ -4,6 +4,16 @@ import styled from 'styled-components'
 const Modal = ({ setFilterModal }) => {
   const [filter, setFilter] = useState([]);
   const [sex, setSex] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [age, setAge] = useState('');
+  const [driverLicense, setDriverLicense] = useState('');
+  const [smoke, setSmoke] = useState('');
+  const [hair, setHair] = useState('');
+  const [skin, setSkin] = useState('');
+  const [voice, setVoice] = useState('');
+  const [residence, setResidence] = useState('');
+  const [ableCountry, setAbleCountry] = useState('');
 
   const filtering = (e) => {
     if (filter.includes(e.target.value)) {
@@ -30,7 +40,7 @@ const Modal = ({ setFilterModal }) => {
           <ModalBox>
             <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', width:'100%', borderBottom:'1px solid #e6e6e6', marginTop:15, paddingBottom:15}}>
               <div className='title-text' style={{marginLeft:15}}>기타 카테고리</div>
-              <div className='title-text' style={{marginRight:15, color:'#FF1B3F'}}>저장</div>
+              <button className='title-text' style={{marginRight:15, color:'#FF1B3F', backgroundColor:'transparent', border:0}} disabled={filter.length==0} >저장</button>
             </div>
             <div style={{padding:30}}>
               <div className='filter-title'>본인에 해당하는 항목을 선택해주세요</div>
@@ -38,6 +48,72 @@ const Modal = ({ setFilterModal }) => {
               <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
                 <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
                   <div className='filter-title'>성별</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>키</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>120cm 미만</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>130~139cm</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>몸무게</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>나이</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>운전면허 소지여부</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>흡연 여부</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>머리색</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>머리길이</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>인종</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>목소리톤</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>거주 지역</div>
+                  <div style={{ color: '#989898' }}>다중선택 불가능</div>
+                  <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
+                  <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>
+                </div>
+                <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
+                  <div className='filter-title'>가능 지역</div>
                   <div style={{ color: '#989898' }}>다중선택 불가능</div>
                   <label><input type='radio' onChange={radioFiltering} value={'남'} checked={sex === '남'}/>남</label>
                   <label><input type='radio' onChange={radioFiltering} value={'여'} checked={sex === '여'}/>여</label>

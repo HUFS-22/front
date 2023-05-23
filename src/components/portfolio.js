@@ -2,16 +2,16 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Portfolio = () => {
+const Portfolio = ({title, image, userName, userImage}) => {
   const navigate = useNavigate();
 
   return (
     <ArtistComponent onClick={()=>{navigate('/portfolio/1')}}>
-      <img className='img-style' src='https://static.talented.co.kr/user_data/gyelus/profile_image/410ab5c6-43da-4101-b08a-ac992e8af7c6.jpeg?w=300&h=300' />
-      <div className='name-text'>포트폴리오 명</div>
+      <img className='img-style' src={image} />
+      <div className='name-text'>{title}</div>
       <div className='description-text'>
-      <img className='profile-img' src='https://static.talented.co.kr/user_data/gyelus/profile_image/410ab5c6-43da-4101-b08a-ac992e8af7c6.jpeg?w=300&h=300' />
-        <div>아티스트명</div>
+      <img className='profile-img' src={userImage} />
+        <div>{userName}</div>
       </div>
     </ArtistComponent>
   )
@@ -24,12 +24,14 @@ const ArtistComponent = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
   cursor: pointer;
+  margin-right: 10px;
 
   .img-style{
     width: 220px;
     height: 220px;
     border-radius: 10px;
     margin-bottom: 20px;
+    object-fit: cover;
   }
 
   .description-text{

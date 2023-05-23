@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageContainer, PageWrap } from '../components/styledPage'
 import { SearchBox } from './Search'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu } from './SearchResult';
 import styled from 'styled-components';
 import Portfolio from '../components/portfolio';
+import axios from 'axios';
 
 const PortfolioPage = () => {
   const [searchClick, setSearchClick] = useState(false);
@@ -12,7 +13,29 @@ const PortfolioPage = () => {
   const location = useLocation();
 
   const [search, setSearch] = useState(location.state);
+
+  const [portfolioList, setPortfolioList] = useState([]);
   
+  const portfolioSearch = async (search) => {
+    try {
+      const data = await axios({
+        method: 'get',
+        url: `/search/portfolio?q=${search}`,
+      })
+      console.log(data);
+      if (data.data.code === 200) {
+        setPortfolioList(data.data.result)
+      }
+    } 
+    catch(err) {
+      alert(err);
+    }
+  }
+  
+  useEffect(() => {
+    portfolioSearch(search)
+  },[search])
+
   return (
     <PageWrap>
       <PageContainer>
@@ -29,16 +52,13 @@ const PortfolioPage = () => {
           </Menu>
         <div style={{ fontSize: '25px', fontWeight: 900, marginBottom: '24px', marginTop: '40px' }}>포트폴리오</div>
         <PortfolioResult>
-          <Portfolio />
-          <Portfolio/>
-          <Portfolio/>
-          <Portfolio/>
-          <Portfolio/>
-          <Portfolio />
-          <Portfolio/>
-          <Portfolio/>
-          <Portfolio/>
-          <Portfolio/>
+        {portfolioList.length != 0 ? portfolioList.map((portfolio) => (
+            <Portfolio title={portfolio.title} image={portfolio.coverImageUrl} userName={portfolio.userName} userImage={portfolio.profileImageUrl} />
+              )) :
+                <div>
+                  해당 키워드에 대한 검색 결과가 없습니다.
+                </div>
+          }
         </PortfolioResult>
       </PageContainer>
     </PageWrap>

@@ -99,7 +99,7 @@ const ArtistPage = () => {
               {artistList.length != 0 ? artistList.map((artist) => (
                 <Artist belong={artist.belong} job={artist.job} image={artist.profileImageUrl} userName={artist.userName}/>
               )) :
-                <div>
+                <div style={{fontSize:20, fontWeight:500, marginBottom:10}}>
                   해당 키워드에 대한 검색 결과가 없습니다.
                 </div>
               }

@@ -24,12 +24,13 @@ const Modal = ({ setFilterModal }) => {
       setFilter([...filter,e.target.value])
     }
   }
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
   const filterRegister = async (userId) => {
     try {
       const data = await axios({
         method: 'post',
-        url: `/artist-keyword/${userId}`,
+        url: `${PROXY}/artist-keyword/${userId}`,
         data: {
           "keywords": [
             ...filter,

@@ -57,7 +57,7 @@ const PortfolioPage = () => {
         {portfolioList.length != 0 ? portfolioList.map((portfolio) => (
             <Portfolio title={portfolio.title} image={portfolio.coverImageUrl} userName={portfolio.userName} userImage={portfolio.profileImageUrl} />
               )) :
-                <div>
+                <div style={{fontSize:20, fontWeight:500, marginBottom:10}}>
                   해당 키워드에 대한 검색 결과가 없습니다.
                 </div>
           }

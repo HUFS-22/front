@@ -78,8 +78,9 @@ const SearchResult = () => {
           {artistList.length != 0 ? artistList.map((artist) => (
                 <Artist belong={artist.belong} job={artist.job} image={artist.profileImageUrl} userName={artist.userName}/>
               )) :
-                <div>
-                  해당 키워드에 대한 검색 결과가 없습니다.
+              <div style={{ width: '100%', justifyContent: 'center', textAlign: 'center', display: 'flex', flexDirection:'column', marginBottom:40}}>
+                <div style={{fontSize:20, fontWeight:500, marginBottom:10}}>해당 키워드에 대한 검색 결과가 없습니다.</div>
+                <div style={{color:'silver'}}>'성별, 키와 같은 항목을 검색해보세요'</div>
                 </div>
               }
           </div>
@@ -95,9 +96,10 @@ const SearchResult = () => {
           {portfolioList.length != 0 ? portfolioList.map((portfolio) => (
             <Portfolio title={portfolio.title} image={portfolio.coverImageUrl} userName={portfolio.userName} userImage={portfolio.profileImageUrl} />
               )) :
-                <div>
-                  해당 키워드에 대한 검색 결과가 없습니다.
-                </div>
+              <div style={{ width: '100%', justifyContent: 'center', textAlign: 'center', display: 'flex', flexDirection:'column', marginBottom:40}}>
+              <div style={{fontSize:20, fontWeight:500, marginBottom:10}}>해당 키워드에 대한 검색 결과가 없습니다.</div>
+              <div style={{color:'silver'}}>'청순, 시크와 같이 검색해보세요'</div>
+              </div>
           }
           </div>
           <div className='more' onClick={()=>navigate('/search/result/portfolio',{state:search})}>

@@ -36,7 +36,7 @@ const PortfolioPage = () => {
   
   useEffect(() => {
     portfolioSearch(search)
-  },[search])
+  },[])
 
   return (
     <PageWrap>

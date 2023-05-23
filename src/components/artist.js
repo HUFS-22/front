@@ -23,6 +23,7 @@ const ArtistComponent = styled.div`
   align-items: center;
   margin-bottom: 30px;
   cursor: pointer;
+  margin-right: 5px;
 
   .img-style{
     width: 220px;

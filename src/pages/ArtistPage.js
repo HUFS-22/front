@@ -80,7 +80,7 @@ const ArtistPage = () => {
     <PageWrap>
       <PageContainer>
         <div style={{display:'flex', flexDirection: 'row', height:'100vh'}}>
-          <div style={{width:'76%', paddingRight: '12px', borderRight: '1px solid #D6D0D0'}}>
+          <div style={{width:'100%', paddingRight: '12px', borderRight: '1px solid #D6D0D0'}}>
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent:'center', marginTop:'70px' }}>
               <SearchBox>
                 <input className='input-style' placeholder={searchClick?'':'아티스트가 만들어가는 창의적인 검색'} onFocus={()=>{setSearchClick(true)}} onBlur={()=>setSearchClick(false)} value={search} onChange={(e)=>setSearch(e.target.value)}/>
@@ -104,7 +104,23 @@ const ArtistPage = () => {
             </ArtistResult>
           </div>
           <FilteringComponent>
-            <div style={{width:'100%'}}>아티스트 정보를 구체화할 수 있어요</div>
+            <div style={{width:'100%', display:'flex', flexDirection:'row', marginTop:10, marginBottom:10, justifyContent:'space-between', alignItems:'center'}}>
+              <div style={{color: '#726C6C', fontSize: 15, fontWeight: 700 }}>* 아티스트 정보를 구체화할 수 있어요</div>
+              <div style={{ fontSize: 10, cursor:'pointer' }} onClick={() => {
+                setFilter([])
+                setHeight('')
+                setWeight('')
+                setHairColor('')
+                setHairHeight('')
+                setSex('')
+                setAge('')
+                setSkinColor('')
+                setVoice('')
+                setDriverLicense('')
+                setSmoke('')
+                setImage('')
+              }}>초기화</div>
+            </div>
             <Accordian title={"키"} contents={RadioFilter.RadioFilter[0].subTitle} setContent={setHeight} filter={height} IsMultiSelect={false} />
             <Accordian title={"몸무게"} contents={RadioFilter.RadioFilter[1].subTitle} setContent={setWeight} filter={weight} IsMultiSelect={false} />
             <Accordian title={"머리색"} contents={RadioFilter.RadioFilter[2].subTitle} setContent={setHairColor} filter={hairColor} IsMultiSelect={false} />
@@ -143,5 +159,5 @@ const ArtistResult = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  width: 100%;
 `;

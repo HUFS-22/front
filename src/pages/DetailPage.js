@@ -1,11 +1,57 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageContainer, PageWrap } from '../components/styledPage'
 import styled from 'styled-components'
 import Modal from '../components/modal';
+import filering_icon from '../assets/images/filtering.svg'
+import axios from 'axios';
 
 const DetailPage = () => {
 
   const [filterModal, setFilterModal] = useState(false);
+  const [isFilter, setIsFilter] = useState(false);
+  const [profile, setProfile] = useState({});
+
+  const getProfile = async (userId) => {
+    try {
+      const data = await axios({
+        method: 'get',
+        url: `/channel/${userId}`,
+      })
+      console.log(data);
+      if (data.data.code === 200) {
+        setProfile(data.data.result)
+      }
+    } 
+    catch(err) {
+      alert(err);
+    }
+  }
+
+  const isFiltered = async (userId) => {
+    try {
+      const data = await axios({
+        method: 'get',
+        url: `/artist-keyword/${userId}`,
+      })
+      console.log(data);
+      if (data.data.code === 200) {
+        if (data.data.result.length != 0) {
+          setIsFilter(true)
+        } 
+      }
+      else {
+        setIsFilter(false)
+      }
+    } 
+    catch(err) {
+      alert(err);
+    }
+  }
+
+  useEffect(() => {
+    isFiltered(1)
+    getProfile(1)
+  },[])
 
   return (
       <PageWrap>
@@ -88,14 +134,21 @@ const DetailPage = () => {
               </DetailBox>
               <DetailBox onClick={()=>setFilterModal(true)}>
                 <div style={{display:'flex', flexDirection:'column', marginTop:10, marginLeft:15, justifyContent:'center'}}>
-                  <img src='https://static.talented.co.kr/t_img/service_img/img/icon/ic_t_ch_cover.png' style={{ borderRadius: '50%', width: 40, height: 40}} />
-                  <div className='title-text'>기타 카테고리</div>
-                  <div style={{color:'#cbcbcb', fontWeight:700, marginTop:12}}>없음</div>
+                  <img src={filering_icon} style={{ borderRadius: '50%', width: 40, height: 40}} />
+                  <div className='title-text'>캐스팅 확률 UP</div>
+                  <div style={{color:'#cbcbcb', fontWeight:700, marginTop:12}}>{isFilter?'정보입력완료':'없음'}</div>
                 </div>
               </DetailBox>
             </div>
             <div style={{width:'35%'}}>
-              <DetailBox style={{width:350, height:350}}/>
+            <DetailBox style={{ width: 300, height: 350, padding:20, display:'flex', justifyContent:'space-between', flexDirection:'column' }}>
+              <div>
+                <div style={{ fontSize: 30, fontWeight: 900 }}>{profile.userName}</div>
+                <div style={{fontSize:17}}>{profile.belong}</div>
+                <div style={{fontSize:17}}>{profile.job}</div>
+              </div>
+              <div style={{width:'100%', backgroundColor:'#000000', justifyContent:'center', color:'#FFFFFF', borderRadius:5, display:'flex', height:50, alignItems:'center', fontSize:20, fontWeight:600,}}>저장</div>
+            </DetailBox>
             </div>
           </div>
         </PageContainer>

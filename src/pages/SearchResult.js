@@ -36,6 +36,7 @@ const SearchResult = () => {
 }
 
   useEffect(() => {
+    console.log(search)
     totalSearch(search)
   }, [search])
   

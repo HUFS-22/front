@@ -2,11 +2,11 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Portfolio = ({title, image, userName, userImage}) => {
+const Portfolio = ({title, image, userName, userImage, userId}) => {
   const navigate = useNavigate();
 
   return (
-    <ArtistComponent onClick={()=>{navigate('/portfolio/1')}}>
+    <ArtistComponent onClick={()=>{navigate(`/portfolio/${userId}`)}}>
       <img className='img-style' src={image} />
       <div className='name-text'>{title}</div>
       <div className='description-text'>

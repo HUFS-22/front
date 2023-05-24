@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { PageContainer, PageWrap } from '../components/styledPage';
+import PortfolioDetail from '../components/portfolioDetail';
 
 const PortfolioDetailPage = () => {
 
-  const location = useLocation();
-  console.log(location)
+  const {id} = useParams();
+  console.log("id : ", id);
+
+  const [portfolioData, setPortfolioData] = useState({})
 
   const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
@@ -14,9 +17,10 @@ const PortfolioDetailPage = () => {
       try {
         const data = await axios({
           method: 'get',
-          url: `${PROXY}/portfolio/1`,
+          url: `${PROXY}/portfolio/${id}`,
         })
         console.log(data);
+        setPortfolioData(data.data.result)
       } 
       catch(err) {
         alert(err);
@@ -24,13 +28,13 @@ const PortfolioDetailPage = () => {
   }
   
   useEffect(() => {
-    searchPortfolio()
+    searchPortfolio(id)
   },[])
 
   return (
     <PageWrap>
-      <PageContainer>
-        PortfolioDetailPage
+      <PageContainer style={{display:'flex', justifyContent:'center'}}>
+        <PortfolioDetail title={portfolioData.title} hashTags={portfolioData.hashTags} coverImageUrl={portfolioData.coverImageUrl}/>
       </PageContainer>
     </PageWrap>
   )

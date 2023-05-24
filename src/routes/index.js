@@ -9,6 +9,7 @@ import PortfolioDetailPage from "../pages/PortfolioDetailPage";
 import MyPage from "../pages/MyPage";
 import ProfilePage from "../pages/ProfilePage";
 import DetailPage from "../pages/DetailPage";
+import ArtistDetailPage from "../pages/ArtistDetailPage";
 
 const RootRoute = () => {
   return (
@@ -21,6 +22,7 @@ const RootRoute = () => {
         <Route path="/search/result/artist" element={<ArtistPage />} />
         <Route path="/search/result/portfolio" element={<PortfolioPage />} />
         <Route path="/portfolio/:id" element={<PortfolioDetailPage />} />
+        <Route path="/artist/:id" element={<ArtistDetailPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/detail" element={<DetailPage/>} />

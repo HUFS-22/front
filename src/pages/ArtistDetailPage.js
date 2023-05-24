@@ -42,7 +42,7 @@ const ArtistDetailPage = () => {
         <div style={{display:'flex', flexDirection:'row', marginLeft:15, marginRight:15, marginTop:30}}>
           {
             artistData.portfolioList && artistData.portfolioList.map((portfolio) => (
-              <Portfolio title={portfolio.title} image={portfolio.coverImageUrl} />
+              <Portfolio title={portfolio.title} image={portfolio.coverImageUrl}/>
             ))
           }
         </div>

@@ -97,7 +97,7 @@ const ArtistPage = () => {
             <div style={{ fontSize: '25px', fontWeight: 900, marginBottom: '24px', marginTop: '40px' }}>아티스트</div>
             <ArtistResult>
               {artistList.length != 0 ? artistList.map((artist) => (
-                <Artist belong={artist.belong} job={artist.job} image={artist.profileImageUrl} userName={artist.userName}/>
+                <Artist belong={artist.belong} job={artist.job} image={artist.profileImageUrl} userName={artist.userName} userId={artist.userId}/>
               )) :
                 <div style={{fontSize:20, fontWeight:500, marginBottom:10}}>
                   해당 키워드에 대한 검색 결과가 없습니다.

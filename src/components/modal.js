@@ -82,7 +82,7 @@ const Modal = ({ setFilterModal }) => {
                   <div className='filter-title'>성별</div>
                   <div style={{ color: '#989898' }}>다중선택 불가능</div>
                   {RadioFilter.RadioFilter[4].subTitle.map((content)=>(
-                     <label style={{marginBottom:3}}><input type='radio' onChange={()=>setHeight(content)} value={content} checked={height === content} />{content}</label>
+                     <label style={{marginBottom:3}}><input type='radio' onChange={()=>setSex(content)} value={content} checked={sex === content} />{content}</label>
                   ))}
                 </div>
                 <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>
@@ -131,7 +131,7 @@ const Modal = ({ setFilterModal }) => {
                   <div className='filter-title'>머리길이</div>
                   <div style={{ color: '#989898' }}>다중선택 불가능</div>
                   {RadioFilter.RadioFilter[3].subTitle.map((content)=>(
-                     <label style={{marginBottom:3}}><input type='radio' onChange={()=>setHairColor(content)} value={content} checked={hairColor === content} />{content}</label>
+                     <label style={{marginBottom:3}}><input type='radio' onChange={()=>setHairHeight(content)} value={content} checked={hairHeight === content} />{content}</label>
                   ))}
                 </div>
                 <div style={{marginTop:20, display:'flex', flexDirection:'column'}}>

@@ -34,7 +34,7 @@ const PortfolioDetailPage = () => {
   return (
     <PageWrap>
       <PageContainer style={{display:'flex', justifyContent:'center'}}>
-        <PortfolioDetail title={portfolioData.title} hashTags={portfolioData.hashTags} coverImageUrl={portfolioData.coverImageUrl}/>
+        {portfolioData && <PortfolioDetail title={portfolioData.title} hashTags={portfolioData.hashTags} coverImageUrl={portfolioData.coverImageUrl}/>}
       </PageContainer>
     </PageWrap>
   )

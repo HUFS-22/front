@@ -55,7 +55,7 @@ const PortfolioPage = () => {
         <div style={{ fontSize: '25px', fontWeight: 900, marginBottom: '24px', marginTop: '40px' }}>포트폴리오</div>
         <PortfolioResult>
         {portfolioList.length != 0 ? portfolioList.map((portfolio) => (
-            <Portfolio title={portfolio.title} image={portfolio.coverImageUrl} userName={portfolio.userName} userImage={portfolio.profileImageUrl} />
+            <Portfolio title={portfolio.title} image={portfolio.coverImageUrl} userName={portfolio.userName} userImage={portfolio.profileImageUrl} userId={portfolio.portfolioId}/>
               )) :
                 <div style={{fontSize:20, fontWeight:500, marginBottom:10}}>
                   해당 키워드에 대한 검색 결과가 없습니다.

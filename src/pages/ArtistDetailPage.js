@@ -40,7 +40,7 @@ const ArtistDetailPage = () => {
       <div style={{height:'100vh', width: '30%', position:"relative"}}>
         <img src='https://static.talented.co.kr/t_img/service_img/reb/ch_cov_dummy_back.png' style={{ height: '100vh', width: '100%' }} />
         <div style={{ position: 'absolute', bottom: 80, width:'80%', left:40 }}>
-          <img src={artistData.profileImageUrl} style={{ borderRadius: '50%', width: 80, height: 80, marginBottom:20}} />
+          <img src={artistData.profileImageUrl} style={{ borderRadius: '50%', width: 80, height: 80, marginBottom:20, objectFit:'cover'}} />
           <div style={{fontSize:'32px', fontWeight:800, marginBottom:20}}>{artistData.userName}</div>
           <div style={{fontSize:16, marginBottom:20}}>{artistData.job}</div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent:'space-between', alignItems:'center'}}>

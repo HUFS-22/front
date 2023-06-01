@@ -1,10 +1,14 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const Accordian = ({title, contents, setContent, filter, IsMultiSelect, filtering}) => {
   const parentRef = React.useRef(null);
   const childRef = React.useRef(null);
   const [isCollapse, setIsCollapse] = useState(false);
+
+  useEffect(() => {
+    parentRef.current.style.height = 0;
+  },[])
 
   const handleButtonClick = useCallback(
     (event) => {
@@ -36,7 +40,8 @@ const Accordian = ({title, contents, setContent, filter, IsMultiSelect, filterin
       <ContentsWrapper ref={parentRef}>
         <Contents ref={childRef}>
           {
-          IsMultiSelect==false ? contents.map((content) => (
+            IsMultiSelect == false ?
+              contents.map((content) => (
             <label style={{marginBottom:3}}><input type='radio' onChange={()=>setContent(content)} value={content} checked={filter === content} />{content}</label>
           )) :
           contents.map((content) => (

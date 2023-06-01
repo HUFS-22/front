@@ -38,7 +38,7 @@ const ProfilePage = () => {
           <img src={user && user.profileImageUrl} style={{ borderRadius: '50%', width: 80, height: 80, marginBottom:20, objectFit:'cover'}} />
           <div style={{fontSize:'32px', fontWeight:800, marginBottom:20}}>{user&&user.userName}</div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent:'space-between', alignItems:'center'}}>
-            <div style={{border: '1px solid #f6f6f6', borderRadius:10, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:60, width: 200, fontSize:18, fontWeight:600}}>내 프로필 수정</div>
+            <div style={{border: '1px solid #f6f6f6', borderRadius:10, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:60, width: 200, fontSize:18, fontWeight:600, cursor:'pointer'}} onClick={()=>navigate('/detail')}>내 프로필 편집</div>
             <img src='https://static.talented.co.kr/t_img/service_img/img_pc/icon/ic_nav_message_24n.png' style={{width:50, height:50}}/>
             <img src='https://static.talented.co.kr/t_img/service_img/img/icon/ic_t_shr_w.png' style={{width:50, height:50}}/>
           </div>
